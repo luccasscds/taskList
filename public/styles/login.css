@@ -1,0 +1,107 @@
+body {
+    background-color: var(--black);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+
+    padding: 0 1.5rem 4rem 1.5rem;
+}
+
+main section {
+    max-width: 24rem;
+    margin-top: 10rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main section h2{
+    color: var(--white);
+
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 3rem;
+    text-align: center;
+}
+
+section .buttons-social-networds {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 1rem;
+    justify-content: center;
+
+    padding-top: 77px;
+}
+
+section .buttons-social-networds .button {
+    margin: 0;
+}
+
+section .buttons-social-networds .button:hover {
+    background: var(--grey);
+}
+
+section .buttons-social-networds + p {
+    text-align: center;
+    color: var(--white);
+    padding: 1rem 0;
+}
+
+section form input {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+section form input:hover {
+    border-color: var(--green);
+}
+
+.button.submit {
+    background-color: var(--green);
+
+    border: 0;
+    margin: 0;
+
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+section .text-login {
+    color: var(--white);
+    
+    padding: 2rem 0;
+    
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+section .text-login > a {
+    font-weight: 600;
+}
+
+section .back-to-home {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 24px;
+}
+
+/* =================
+Botão login do Google 
+====================*/
+
+.g-signin2 .abcRioButton.abcRioButtonLightBlue {
+    background: url("/images/google.svg") no-repeat center;
+    color: var(--white);
+    border-radius: initial;
+    box-shadow: initial;
+}
+
+.g-signin2 .abcRioButton.abcRioButtonLightBlue .abcRioButtonContentWrapper ,
+.g-signin2 .abcRioButton.abcRioButtonLightBlue .abcRioButtonContentWrapper .abcRioButtonContents{
+    display: none;
+}

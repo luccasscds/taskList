@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça seu login | Task List</title>
+
+    <!-- login google api -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/login.css">
+
+    <!-- Scripts -->
+    <script src="/scripts/login.js"></script>
+
+</head>
+<body>
+    <div class="loginIn">
+        <%- include(`parts/${page}`, { 
+            title:"Faça seu login",
+            text_button:"Entrar",
+            text:"Não tem conta?" ,
+            link:"loginUp" ,
+            text_link:"Criar" }) 
+        %>
+    </div>
+</body>
+</html>
