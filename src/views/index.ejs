@@ -5,11 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task List</title>
+    
+    <!-- login google api -->
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <meta name="google-signin-client_id" content="911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com">
+
+    <!-- Script -->
+    <script src="/scripts/main.js"></script>
+
 </head>
 <body>
     <div class="index">
         <h2><a href="/loginUp">Crie sua conta</a></h2>
         <h2><a href="/loginIn">Faça seu Login</a></h2>
+
+        <h1 class="saudacao">
+            <% if(!user) {%>
+                Bom dia
+            <%}else{%>
+                Bom dia <%= user.name %>
+            <%}%>
+        </h1> 
+
+        <!-- Botão fazer login Google -->
+        <div class="g-signin2 button" data-onsuccess="onSignIn"></div>
+        
+        <!-- Sair da conta do google -->
+        <a href="" onclick="signOut();">Sign out</a>
+
     </div>
 </body>
 </html>

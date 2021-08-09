@@ -7,7 +7,7 @@
     <title>Cadastro | Task List</title>
     
     <!-- login google api -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <meta name="google-signin-client_id" content="911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com">
 
     <!-- Fonts -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/styles/login.css">
 
     <!-- Scripts -->
-    <script src="/scripts/login.js"></script>
+    <script src="/scripts/login.js" async defer></script>
     
 </head>
 <body>
@@ -28,12 +28,12 @@
     <div class="loginUp">
         <%- include(`parts/${page}`, { 
             title:"Crie sua conta",
+            action: "register",
             text_button:"Criar",
             text:"Já tem uma conta?" ,
             link:"loginIn" ,
             text_link:"Entrar"  }) 
         %>
     </div>
-
 </body>
 </html>

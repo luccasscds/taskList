@@ -3,12 +3,8 @@
         
         <h2><%= title %></h2>
 
-        <!-- Sair da conta do google -->
-        <!-- <a href="" onclick="signOut();">Sign out</a> -->
-        
         <div class="buttons-social-networds">
 
-            <!-- Botão de login do Google -->
             <button class="g-signin2 button" data-onsuccess="onSignIn">
                 <!-- Continuar com Google -->
             </button>
@@ -21,12 +17,12 @@
 
         <p>ou</p>
 
-        <form action="" method="POST">
-            <input class="button" type="email" placeholder="Email">
-            <input class="button" type="password" placeholder="Senha">
+        <!-- create -->
+        <form id="form" action="/<%= action %>" method="POST">
+            <input class="button" type="email" name="email" placeholder="Email" required>
+            <input class="button" type="password" name="password" placeholder="Senha" required>
 
-            <button class="button submit"><%= text_button %></button>
-
+            <button form="form" class="button submit"><%= text_button %></button>
         </form>
 
         <p class="text-login"><%= text %><a href="/<%= link %>"><%= text_link %></a></p>

@@ -1,8 +1,19 @@
 const express = require('express')
+const authController = require('./controllers/authController')
+const dashboardController = require('./controllers/dashboardController')
+
 const routes = express.Router()
 
-routes.get("/", (req, res) => res.render("index"))
-routes.get("/loginUp", (req, res) => res.render("loginUp", { page: 'login' } ))
-routes.get("/loginIn", (req, res) => res.render("loginIn", { page: 'login' } ))
+// Routas
+routes.get("/", dashboardController.index)
+routes.get("/authorized/", dashboardController.authorized)
+
+routes.get("/loginIn", authController.loginIn)
+routes.get("/loginUp", authController.loginUp)
+
+routes.get("/signGoogle", authController.signGoogle)// mudar o metodo get para post
+
+routes.post("/register", authController.register)
+routes.post("/authenticate", authController.authenticate)
 
 module.exports = routes;
