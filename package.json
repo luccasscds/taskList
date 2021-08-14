@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "google-auth-library": "^7.5.0",
     "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2"
   },

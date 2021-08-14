@@ -31,8 +31,10 @@ module.exports = {
     async create(newUser){
         
         // Criptografando a senha do usuario
-        const hash = await bcrypt.hash(newUser.password, 10)
-        newUser.password = hash
+        if(newUser.password !== 'google' && newUser.password !== 'git') {
+            const hash = await bcrypt.hash(newUser.password, 10)
+            newUser.password = hash
+        }
 
         const db = await Database()
 

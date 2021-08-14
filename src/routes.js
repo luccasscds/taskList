@@ -11,7 +11,8 @@ routes.get("/authorized/", dashboardController.authorized)
 routes.get("/loginIn", authController.loginIn)
 routes.get("/loginUp", authController.loginUp)
 
-routes.get("/signGoogle", authController.signGoogle)// mudar o metodo get para post
+routes.post("/signGoogle", authController.signGoogle)
+routes.get("/signGithub", authController.signGithub)
 
 routes.post("/register", authController.register)
 routes.post("/authenticate", authController.authenticate)

@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
     if(parts.length < 3) return res.send('Token error')
     
     jsonWebToken.verify(token, authConfig.secret, (err, decoded) => {
-        if(err) return res.send('Token invalid')
+        if(err) res.send('Token invalid')
 
         req.userId = decoded.id
         next()
