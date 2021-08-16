@@ -89,19 +89,3 @@ section .back-to-home {
     font-size: 1rem;
     line-height: 24px;
 }
-
-/* =================
-Botão login do Google 
-====================*/
-
-.g-signin2 .abcRioButton.abcRioButtonLightBlue {
-    background: url("/images/google.svg") no-repeat center;
-    color: var(--white);
-    border-radius: initial;
-    box-shadow: initial;
-}
-
-.g-signin2 .abcRioButton.abcRioButtonLightBlue .abcRioButtonContentWrapper ,
-.g-signin2 .abcRioButton.abcRioButtonLightBlue .abcRioButtonContentWrapper .abcRioButtonContents{
-    display: none;
-}

@@ -1,4 +1,3 @@
-let isSignedInGoogle;
 
 // Fazer login no Google
 function onSignIn(googleUser) {
@@ -7,32 +6,19 @@ function onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile()
 
     console.log(profile.getName())
-    isSignedInGoogle = googleAuth.isSignedIn.get()
-}
-
-function sendRequest() {
-    fetch("/test/post?id=12", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-    })
-    // .then( response => response.json() )
-    // .then((json) => {
-    //     console.log("Success:", json);
-    // })
-    // // .catch((error) => {
-    // //     console.error("Error:", error);
-    // // });
 }
 
 // Sair da conta
 function signOut() {
-    let auth2 = gapi.auth2.getAuthInstance();
-    isSignedInGoogle = auth2.isSignedIn.Sd
+    const auth2 = gapi.auth2.getAuthInstance();
 
     auth2.signOut().then(function () {
         alert('Você desconectou da sua conta!')
     })
+}
+
+function url() {
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http://localhost:3000&nonce=0394852-3190485-2490358`
+
+    window.location.href = url
 }

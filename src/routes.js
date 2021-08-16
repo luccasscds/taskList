@@ -8,11 +8,10 @@ const routes = express.Router()
 routes.get("/", dashboardController.index)
 routes.get("/authorized/", dashboardController.authorized)
 
-routes.get("/loginIn", authController.loginIn)
-routes.get("/loginUp", authController.loginUp)
-
-routes.post("/signGoogle", authController.signGoogle)
-routes.get("/signGithub", authController.signGithub)
+routes.get("/loginIn", authController.loginIn) // fazer login
+routes.get("/loginUp", authController.loginUp) // criar conta
+routes.get("/signGoogle", authController.signGoogle) // google api
+routes.get("/signGithub", authController.signGithub) // github api
 
 routes.post("/register", authController.register)
 routes.post("/authenticate", authController.authenticate)

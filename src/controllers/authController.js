@@ -4,11 +4,63 @@ const authConfig = require('../config/auth.json')
 const jsonwebtoken = require('jsonwebtoken')
 const fetch = require('node-fetch')
 
+// Gerar meu token
 function gererateToken(id) {
     // gerar o token
     return jsonwebtoken.sign({id}, authConfig.secret, {
         expiresIn: 84600,
     })
+}
+// obter token do google
+async function getTokenGoogle(code) {
+    let idToken
+    const url = 'https://oauth2.googleapis.com/token'
+    const options = {
+        method : "POST",
+        headers : {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        },
+        body : new URLSearchParams({
+            code : code,
+            client_id : '911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com',
+            client_secret : 'RW7YSCtKmUdaHkpZYSABLBEo',
+            redirect_uri : 'http://localhost:3000/signGoogle',
+            grant_type : 'authorization_code'
+        })
+    }
+
+    await fetch(url, options).then( resp => resp.json())
+    .then( resp => {
+        idToken = resp.id_token
+    })
+
+    return idToken
+}
+// obter token do GitHub
+async function getTokenGit(code) {
+    const client_id = 'a304031e4c1e9ce53f74'
+    const client_secret = '9a04141914533577b9a38b144ebba9d8b4e62187'
+    let token
+
+    const url = `https://github.com/login/oauth/access_token`
+    const options = {
+        method: "POST",
+        headers: {
+            "Accept" : "application/json"
+        },
+        body: new URLSearchParams({
+            client_id : client_id,
+            client_secret : client_secret,
+            code : code
+        })
+    }
+
+    await fetch(url, options).then( resp => resp.json() ).then(resp => {
+        if(resp?.error) res.send({ error : resp.error})
+        else token = resp.access_token
+    })
+
+    return token
 }
 
 module.exports = {
@@ -73,9 +125,10 @@ module.exports = {
     // Fazer login atraves do google
     async signGoogle(req, res) {
         const users = await User.get()
-        const idToken = req.query.token
+        const {code} = req.query
+        const idToken = await getTokenGoogle(code)
 
-        if(idToken != undefined){
+        if(idToken !== undefined){
             const payload = await User.verifyTokenGoogle(idToken)
             let existe = false
             
@@ -84,6 +137,7 @@ module.exports = {
                 if(user.email === payload.email) {
                     existe = true
                     const token = gererateToken(user.id)
+                    console.log(payload)
                     return res.redirect(`/authorized?token=${token}`)
                 }
             })
@@ -102,45 +156,18 @@ module.exports = {
             }
         }
         
-        return res.send('error')
+        return res.send('Error')
     },
 
     // Fazer login atraves do GitHub
     async signGithub(req, res) {
         const users = await User.get()
+        const {code} = req.query
         let newUser = {}
-        
-        // Fazer uma request com fetch
-        async function getToken() {
-            const client_id = 'a304031e4c1e9ce53f74'
-            const client_secret = '9a04141914533577b9a38b144ebba9d8b4e62187'
-            const {code} = req.query
-            let token
-
-            const url = `https://github.com/login/oauth/access_token`
-            const options = {
-                method: "POST",
-                headers: {
-                    "Accept" : "application/json"
-                },
-                body: new URLSearchParams({
-                    client_id : client_id,
-                    client_secret : client_secret,
-                    code : code
-                })
-            }
-
-            await fetch(url, options).then( resp => resp.json() ).then(resp => {
-                if(resp?.error) res.send({ error : resp.error})
-                else token = resp.access_token
-            })
-
-            return token
-        }
 
         // Fazer uma request com token do user
         async function getData() {
-            const token = await getToken()
+            const token = await getTokenGit(code)
 
             if(token != undefined) {
                 const url = `https://api.github.com/user`
@@ -151,19 +178,12 @@ module.exports = {
 
                 await fetch(url, options).then( resp => resp.json())
                 .then( resp => {
-                    // User.create({
-                    //     email: resp.login,
-                    //     password: 'git',
-                    //     name: resp.name,
-                    //     picture: resp.avatar_url
-                    // })
                     newUser = {
                         email: resp.login,
                         password: 'git',
                         name: resp.name,
                         picture: resp.avatar_url
                     }
-                    // return res.send('usuário criado')
                 })
             }
         }
