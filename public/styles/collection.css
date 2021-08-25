@@ -1,0 +1,211 @@
+html {
+    background-color: var(--black);
+
+    color: var(--white);
+}
+
+#collection main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 10rem;
+}
+
+#collection main section {
+    width: 100%;
+    max-width: 768px;
+
+    padding: 0 1.25rem;
+    margin-top: 3.5rem;
+}
+
+#collection main section .header {
+    margin-bottom: 3rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#collection main section .header .back-title {
+    display: flex;
+    align-items: center;
+}
+
+#collection main section .header .back-title .back-icon {
+    background-color: var(--blue-black-white);
+    display: flex;
+    justify-content: center;
+
+    padding: .75rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+#collection main section .header .back-title .text-h1 {
+    margin-left: 1rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+}
+
+#collection main section .header .button-modal {
+    position: relative;
+    display: flex;
+}
+
+#collection main section .header .button-modal > button {
+    background-color: transparent;
+    color: var(--white);
+    padding: .5rem;
+    opacity: .5;
+
+    cursor: pointer;
+}
+
+#collection main section .header .button-modal > button > svg {
+    width: 20px;
+    height: 20px;
+}
+
+#collection main section .text-sub-title {
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+
+#collection main section .task {
+    padding: .5rem 0;
+}
+
+#collection main section .task .main {
+    background-color: var(--blue-black-white);
+    position: relative;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    padding: .75rem;
+    border-radius: 1rem;
+}
+
+#collection main section .task .main > button {
+    background-color: inherit;
+
+    padding: .5rem;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9d4edd;
+    border-radius: .5rem;
+
+    cursor: pointer;
+}
+
+#collection main section .task .main .task-name {
+    padding-right: 2rem;
+    margin-left: .75rem;
+}
+
+#collection main section .task .main .task-button {
+    position: absolute;
+    right: 0;
+
+    margin-right: .5rem;
+    border-radius: .5rem;
+}
+
+#collection main section .task .main .task-button > div > button {
+    background-color: inherit;
+    color: var(--white);
+    padding: .5rem;
+    opacity: .5;
+}
+
+#collection main section .task .main .task-button > div > button > svg {
+    width: 20px;
+    height: 20px;
+}
+
+#collection main section form .add-task {
+    width: 100%;
+    margin: .5rem 0;
+}
+
+#collection main section form .add-task > .main {
+    width: 100%;
+
+    padding: 10px;
+    border-radius: 1rem;
+    border: 3px solid var(--blue-black-white);
+
+    display: flex;
+    align-items: center;
+}
+
+#collection main section form .add-task > .main > button {
+    background-color: #9d4edd;    
+
+    height: 22px;
+    width: 22px;
+
+    border-radius: .5rem;
+    margin-right: .75rem;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#collection main section form .add-task > .main > button > svg {
+    width: 1rem;
+    height: 1rem;
+
+    color: var(--blue-black-white);
+}
+
+#collection main section form .add-task > .main > input[type="text"] {
+    background-color: transparent;
+
+    width: 100%;
+
+    border-radius: .375rem;
+
+    color: var(--white);
+}
+
+#collection main section form .add-task > .main > input[type="text"]::placeholder {
+    color: var(--white);
+}
+
+.completed {
+    margin-top: 2.5rem;
+    margin-bottom: .5rem;
+
+    font-weight: 500;
+}
+
+#collection main section .completed- .task .main > button.check{
+    width: 22px;
+    height: 22px;
+
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#collection main section .completed- .task .main > button.check svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+#collection main section .completed- .task .main .line-through {
+    text-decoration: line-through;
+
+    margin-left: .75rem;
+    margin-right: 2rem;
+}

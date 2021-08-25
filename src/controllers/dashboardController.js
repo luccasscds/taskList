@@ -1,21 +1,27 @@
-const User = require('../model/User')
+const Collections = require('../model/Collection');
+const User = require('../model/User');
 
 module.exports = {
     index(req, res) {
-        res.render('index', { user : undefined })
+        res.render('index', { user : undefined });
     },
 
     async authorized(req, res){
-        const users = await User.get()
-        const {userId} = req
+        const collections = await Collections.get();
+        const users = await User.get();
+        const {userId, token} = req;
         
         const userOnLine = users.find( user => {
             if(user.id === userId){
                 user.password = undefined
-                return user
+                return user;
             }
-        })
+        });
 
-        res.render('index', { user: userOnLine })
+        const newCollections = collections.filter( collection => {
+            if(collection.userId == userId) return collection;
+        });
+
+        res.render('index', { user: userOnLine, token: token, collections: newCollections});
     }
-}
+};

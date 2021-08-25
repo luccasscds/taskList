@@ -1,0 +1,282 @@
+/* *******************************************
+MODAL DO PROFILE
+******************************************** */
+
+.profile > button + .modal {
+    background-color: var(--blue-black-2);
+    color: var(--white);
+
+    position: absolute;
+    right: 0;
+    
+    width: 14rem;
+
+    margin-top: .5rem;
+
+    border-radius: .375rem;
+
+    word-break: break-all;
+
+    visibility: hidden;
+    opacity: 0;
+}
+
+.profile > button + .modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.profile > button + .modal.open .name {
+    padding: .25rem 0;
+}
+
+.profile > button + .modal.open .name > p{
+    padding: .5rem 1rem;
+}
+
+.profile > button + .modal.open .config {
+    padding: .25rem 0;
+    border: 1px solid var(--black, 1);
+}
+
+.profile > button + .modal.open .config > a > p{
+    padding: .5rem 1rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.profile > button + .modal.open .sign-out {
+    padding: .25rem 0;
+}
+
+.profile > button + .modal.open .sign-out > button {
+    background-color: transparent;
+    color: var(--white);
+
+    padding: .5rem 1rem;
+    
+    cursor: pointer;
+}
+
+/* *******************************************
+MODAL ADD COLLECTION
+******************************************** */
+
+.modal-add-collection {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-add-collection.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-add-collection .main-form {
+    width: 100%;
+    max-width: 28rem;
+    
+    background-color: var(--blue-black);
+    color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    margin: 3.75rem 0;
+    border-radius: 20px;
+    padding-top: .5rem;
+}
+
+.modal-add-collection .main-form .title {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.modal-add-collection .main-form .close {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: .375rem;
+
+    position: absolute;
+    top: .5rem;
+    right: .75rem;
+
+    color: var(--white);
+    background: none;
+
+    outline: none;
+}
+
+.modal-add-collection .main-form .close > svg {
+    width: 12px;
+    height: 12px;
+}
+
+.modal-add-collection .main-form .main {
+    padding: .5rem 1.5rem 1.5rem;
+}
+
+.modal-add-collection .main-form .main .text-name {
+    display: block;
+
+    text-align: start;
+    font-size: 1rem;
+    font-weight: 500;
+
+    margin-bottom: .5rem;
+}
+
+.modal-add-collection .main-form .main #input-name {
+    background: inherit;
+    color: var(--white);
+
+    width: 100%;
+    height: 2.5rem;
+
+    font-size: 1rem;
+
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+    border: 3px solid #343343;
+}
+
+.modal-add-collection .main-form .main #input-name:focus {
+    border-color: #9d4edd;
+}
+
+.modal-add-collection .main-form .main .custom-colors {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1.5rem;
+
+    position: relative;
+}
+
+.modal-add-collection .main-form .main .custom-colors input[type="color"] {
+    opacity: 0;
+
+    width: 60px;
+    height: 50px;
+
+    margin-top: .5rem;
+}
+.modal-add-collection .main-form .main .custom-colors::after {
+    content: '';
+    background-color: #9d4edd;
+    
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    bottom: 0;
+    
+    transform: rotate(45deg);
+    border-radius: 12px;
+}
+
+.modal-add-collection .main-form footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 1rem 1.5rem;
+}
+
+.modal-add-collection .main-form footer button ,
+.modal-add-collection .main-form footer div.cancel {
+    background-color: #3d3c50;
+    color: var(--white);
+
+    user-select: none;
+
+    height: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 1.25rem;
+    border-radius: .375rem;
+
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.modal-add-collection .main-form footer div.cancel {
+    background: transparent;
+
+    margin-left: .75rem;
+}
+
+/* ********************
+    MODAL COLLECTION
+********************** */
+.modal-collection.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-task.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-completed-task.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-collection ,
+.modal-task ,
+.modal-completed-task {
+    width: 14rem;
+
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+
+    margin-top: .5rem;
+    border-radius: .375rem;
+
+    background-color: var(--blue-black-2);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.option {
+    padding: .25rem 0;
+}
+
+.option button {
+    background: inherit;
+    color: var(--white);
+
+    width: 100%;
+
+    text-align: start;
+    font-size: .875rem;
+    line-height: 1.25rem;
+
+    padding: 0 1rem;
+}

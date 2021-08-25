@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection name - Task List</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/collection.css">
+
+    <!-- Script -->
+    <script src="/scripts/modal.js" defer></script>
+
+</head>
+<body>
+    <div id="collection">
+
+        <%# include(`parts/header`) %>
+        
+        <main>
+            <section>
+                <div class="header">
+                    <div class="back-title">
+                        <a class="back-icon" href="/authorized?token=<%= token %>">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M328 112L184 256l144 144"></path>
+                            </svg>
+                        </a>
+                        <h1 class="text-h1"><%= collection.name%></h1>
+                    </div>
+                    <div class="button-modal">
+                        <button>
+                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
+                            </svg>
+                        </button>
+
+                        <!-- modal collection -->
+                        <div class="modal-collection">
+                            <div class="option">
+                                <button>
+                                    <div>Editar coleção</div>
+                                </button>
+                            </div>
+                            <div class="option">
+                                <button form="delete-collection" type="submit">
+                                    <div>Deletar</div>
+                                </button>
+                                <form id="delete-collection" 
+                                action="/authorized/collection/delete/<%= collection.id %>?token=<%= token %>" 
+                                method="post"></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sub-title">tarefas - 2</p>
+
+                <!-- Tasks -->
+                <div>
+                    <div class="task">
+                        <div class="main">
+                            <button style="border-color: <%= collection.color %>;"></button>
+                            <p class="task-name"><%= collection.task %></p>
+                            <div class="task-button">
+                                <div>
+                                    <button>
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- modal task -->
+                                    <div class="modal-task">
+                                        <div class="option">
+                                            <button>
+                                                <div>Editar</div>
+                                            </button>
+                                        </div>
+                                        <div class="option">
+                                            <button>
+                                                <div>Deletar</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add task -->
+                <form action="" method="post">
+                    <div class="add-task">
+                        <div class="main">
+                            <button style="background-color: <%= collection.color %>;">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 11L13 11 13 5 11 5 11 11 5 11 5 13 11 13 11 19 13 19 13 13 19 13z"></path>
+                                </svg>
+                            </button>
+                            <input type="text" name="name" placeholder="Adicionar tarefa" required>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="completed">Concluídas - 1</p>
+
+                <div class="completed-">
+                    <div class="task">
+                        <div class="main">
+                            <button class="check" style="background-color: <%= collection.color %>; border-color: <%= collection.color %>;">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <p class="line-through">texto da tarefa concluida</p>
+                            <div class="task-button">
+                                <div class="completed-task">
+                                    <button>
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- modal completed task -->
+                                    <div class="modal-completed-task">
+                                        <div class="option">
+                                            <button>
+                                                <div>Deletar</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+</html>

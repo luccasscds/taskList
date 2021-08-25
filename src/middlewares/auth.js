@@ -1,19 +1,21 @@
-const jsonWebToken = require("jsonwebtoken")
-const authConfig = require('../config/auth.json')
+const jsonWebToken = require("jsonwebtoken");
+const authConfig = require('../config/auth.json');
 
 module.exports = (req, res, next) => {
-    const {token} = req.query
+    const {token} = req.query;
 
-    if(!token) res.send('No token provided')
+    if(!token) res.send('No token provided');
 
-    const parts = token.split('.')
+    const parts = token.split('.');
 
-    if(parts.length < 3) res.send('Token error')
+    if(parts.length < 3) res.send('Token error');
     
+    // Verificar o tokek 
     jsonWebToken.verify(token, authConfig.secret, (err, decoded) => {
         if(err) res.send('Token invalid')
 
-        req.userId = decoded.id
-        next()
-    })  
-}
+        req.userId = decoded.id;
+        req.token = token;
+        next();
+    });
+};

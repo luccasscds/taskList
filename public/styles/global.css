@@ -10,9 +10,16 @@
 
 html {
     --black: #181820;
+    --blue-black: #1d1d27;
+    --blue-black-white : #21212B;
+    --blue-black-2 : #1e1e29;
     --grey: #343343;
     --white: white;
     --green: #2B9348;
+}
+
+.hidden {
+    display: none;
 }
 
 .button {
@@ -44,4 +51,9 @@ a {
 
 input {
     outline: none;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
 }

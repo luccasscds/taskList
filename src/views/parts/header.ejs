@@ -1,0 +1,36 @@
+<header>
+    <nav>
+        <div class="nav-left">
+            <a class="btn-dashboard" href="/authorized">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="mr-2 text-2xl text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+                </svg>
+                <p>Painel de controle</p>
+            </a>
+        </div>
+
+        <div class="profile">
+            <button>
+                <% if(!user) {%>
+                    <!-- mostra um avatar padrão -->
+                <%}else{%>
+                    <img class="avatar" src="<%= user?.picture %>">
+                    <%}%>
+                </button>
+                <div class="modal" data-modal="off">
+                    <!-- Menu do usuario -->
+                    <div class="name">
+                        <p>Olá <%= user?.name %></p>
+                    </div>
+                    <div class="config">
+                        <a href="/user/config">
+                            <p>Configurações</p>
+                        </a>
+                    </div>
+                    <div class="sign-out">
+                        <button>Sair da conta</button>
+                    </div>
+                </div>
+        </div>
+    </nav>
+</header>

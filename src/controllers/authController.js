@@ -62,6 +62,30 @@ async function getTokenGit(code) {
 
     return token
 }
+// Obter dados do usuário com token do github
+async function getDataGit(code) {
+    const token = await getTokenGit(code)
+    let newUser = {}
+
+    if(token !== undefined) {
+        const url = `https://api.github.com/user`
+        const options = {
+            method : "GET",
+            headers : { "Authorization" : `token ${token}` }
+        }
+
+        await fetch(url, options).then( resp => resp.json())
+        .then( resp => {
+            newUser = {
+                email: resp.login,
+                password: 'git',
+                name: resp.name,
+                picture: resp.avatar_url
+            }
+        })
+        return newUser
+    }
+}
 
 module.exports = {
     async register(req, res) {
@@ -81,12 +105,10 @@ module.exports = {
                     res.send("Usuário já existe")
                 }
             })
-
             if(existe === false) {
                 // Criar user no db
                 await User.create(req.body)
                 const newUsers = await User.get()
-
                 // gerar o token depois que o user tiver criado no db
                 newUsers.find( user => {
                     if(user.email === email) {
@@ -108,7 +130,7 @@ module.exports = {
 
         users.forEach( user => {
             if(user.email === email) {
-                let comparePasswd = bcrypt.compareSync(password, user.password)
+                const comparePasswd = bcrypt.compareSync(password, user.password)
                 
                 if(comparePasswd === true){
                     const token = gererateToken(user.id)
@@ -130,70 +152,32 @@ module.exports = {
 
         if(idToken !== undefined){
             const payload = await User.verifyTokenGoogle(idToken)
-            let existe = false
+            const user = users.find( user => user.email === payload.email ? user : undefined)
             
-            // Verificar se a conta existe no banco de dados
-            users.filter( user => {
-                if(user.email === payload.email) {
-                    existe = true
-                    const token = gererateToken(user.id)
-                    console.log(payload)
-                    return res.redirect(`/authorized?token=${token}`)
-                }
-            })
-
-            // se nao, crie a conta nova
-            if(existe === false) {
+            if(user === undefined) {
                 await User.create(payload)
                 const newUsers = await User.get()
-
-                newUsers.find( user => {
+                newUsers.forEach( user => {
                     if(user.email === payload.email) {
                         const token = gererateToken(user.id)
                         return res.redirect(`/authorized?token=${token}`)
                     }
                 })
+            }else{
+                const token = gererateToken(user.id)
+                return res.redirect(`/authorized?token=${token}`)
             }
         }
         
-        return res.send('Error')
+        return res.send('Error no token')
     },
 
     // Fazer login atraves do GitHub
     async signGithub(req, res) {
         const users = await User.get()
         const {code} = req.query
-        let newUser = {}
-
-        // Fazer uma request com token do user
-        async function getData() {
-            const token = await getTokenGit(code)
-
-            if(token != undefined) {
-                const url = `https://api.github.com/user`
-                const options = {
-                    method : "GET",
-                    headers : { "Authorization" : `token ${token}` }
-                }
-
-                await fetch(url, options).then( resp => resp.json())
-                .then( resp => {
-                    newUser = {
-                        email: resp.login,
-                        password: 'git',
-                        name: resp.name,
-                        picture: resp.avatar_url
-                    }
-                })
-            }
-        }
-
-        // Chamando as funções
-        await getData()
-
-        const user = users.find( user => {
-            return user.email === newUser.email ? user : undefined
-        })
+        const newUser = await getDataGit(code)
+        const user = users.find( user => user.email === newUser.email ? user : undefined)
 
         if(user === undefined) {
             await User.create(newUser)

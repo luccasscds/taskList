@@ -43,16 +43,12 @@ module.exports = {
             password,
             name,
             picture,
-            given_name,
-            family_name,
             isSignedIn
         ) VALUES (
             "${newUser.email}",
             "${newUser.password}",
             "${newUser.name}",
             "${newUser.picture}",
-            "${newUser.given_name}",
-            "${newUser.family_name}",
             "true"
         )`)
 
@@ -77,8 +73,6 @@ module.exports = {
         password="${updateuser.password}",
         name="${updateuser.name}",
         picture="${updateuser.picture}",
-        given_name="${updateuser.given_name}",
-        family_name="${updateuser.family_name}",
         isSignedIn="${updateuser.isSignedIn}"
         WHERE id = ${userId}
         `)

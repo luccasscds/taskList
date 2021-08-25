@@ -11,9 +11,16 @@ const initDb = {
             password TEXT,
             name TEXT,
             picture TEXT,
-            given_name TEXT,
-            family_name TEXT,
             isSignedIn TEXT
+        )`);
+
+        await db.exec(`CREATE TABLE collections (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            userId TEXT,
+            name TEXT,
+            task TEXT,
+            color TEXT,
+            checked TEXT
         )`);
 
         // POVOANDO
@@ -22,16 +29,26 @@ const initDb = {
             password,
             name,
             picture,
-            given_name,
-            family_name,
             isSignedIn
         ) VALUES (
-            "emailcobaia9@gmail.com",
+            "lucas@gmail.com",
             "",
             "vitor carlo",
             "https://lh3.googleusercontent.com/a/AATXAJwDuuC7vFqt7RtaP2EuGMjz4BGpJ8_-UI7h_I3x=s96-c",
-            "vitor",
-            "carlo",
+            "false"
+        );`)
+
+        await db.run(`INSERT INTO collections (
+            userId,
+            name,
+            task,
+            color,
+            checked
+        ) VALUES (
+            "1",
+            "trabalho",
+            "fazer um projeto",
+            "#000000",
             "false"
         );`)
 
