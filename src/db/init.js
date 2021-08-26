@@ -19,8 +19,7 @@ const initDb = {
             userId TEXT,
             name TEXT,
             task TEXT,
-            color TEXT,
-            checked TEXT
+            color TEXT
         )`);
 
         // POVOANDO
@@ -42,14 +41,12 @@ const initDb = {
             userId,
             name,
             task,
-            color,
-            checked
+            color
         ) VALUES (
             "1",
             "trabalho",
-            "fazer um projeto",
-            "#000000",
-            "false"
+            "[{"id":1,"name":"fazer o amorzao feliz","checked":"false"},{"id":2,"name":"levar o chocolate pra minha nega","checked":"true"},{"id":3,"name":"trabalho","checked":"false"}]",
+            "#000000"
         );`)
 
         await db.close()

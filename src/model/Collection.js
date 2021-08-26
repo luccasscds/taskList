@@ -18,14 +18,12 @@ module.exports = {
             userId,
             name,
             task,
-            color,
-            checked
+            color
         ) VALUES (
             "${newCollection.userId}",
             "${newCollection.name}",
             "${newCollection?.task}",
-            "${newCollection?.color}",
-            "${newCollection?.checked}"
+            "${newCollection?.color}"
         )`);
 
         await db.close();
@@ -35,12 +33,11 @@ module.exports = {
         const db = await Database();
 
         await db.run(`UPDATE collections SET 
-        userId = "${newCollection.userId}",
-        name = "${newCollection.name}",
-        task = "${newCollection.task}",
-        color = "${newCollection.color}",
-        checked = "${newCollection.checked}"
-        WHERE id = ${id}`);
+        userId = '${newCollection.userId}',
+        name = '${newCollection.name}',
+        task = '${newCollection.task}',
+        color = '${newCollection.color}'
+        WHERE id = ${id}`)
 
         await db.close();
     },

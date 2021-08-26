@@ -2,6 +2,7 @@ const express = require('express')
 const authController = require('./controllers/authController')
 const collectionController = require('./controllers/collectionController')
 const dashboardController = require('./controllers/dashboardController')
+const taskController = require('./controllers/taskController')
 
 const routes = express.Router()
 
@@ -21,5 +22,7 @@ routes.get("/authorized/collection/:id", collectionController.index)
 routes.post("/authorized/collection/create", collectionController.create)
 routes.post("/authorized/collection/delete/:id", collectionController.delete)
 routes.post("/authorized/collection/update/:id", collectionController.update)
+
+routes.post("/authorized/task/create/:id", taskController.create)
 
 module.exports = routes;

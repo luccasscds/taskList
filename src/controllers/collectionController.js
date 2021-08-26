@@ -9,13 +9,12 @@ module.exports = {
         const selctionCollections = collections.find( collection => {
             if(collection.id == id) {
                 if(collection.userId == userId) {
-                    collection.task = JSON.parse(collection.task);
                     return collection;
                 };
             };
         });
         
-        const tasks = selctionCollections.task;
+        const tasks = JSON.parse(selctionCollections.task);
 
         return res.render('collection', { collection: selctionCollections ,tasks: tasks ,token: token});
     },
