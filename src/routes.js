@@ -20,5 +20,6 @@ routes.get("/authorized/", dashboardController.authorized) // Routes authorized
 routes.get("/authorized/collection/:id", collectionController.index)
 routes.post("/authorized/collection/create", collectionController.create)
 routes.post("/authorized/collection/delete/:id", collectionController.delete)
+routes.post("/authorized/collection/update/:id", collectionController.update)
 
 module.exports = routes;

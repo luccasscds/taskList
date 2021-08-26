@@ -47,7 +47,7 @@
                         </a>
                     <% }) %>
                     <!-- add button collection -->
-                    <button class="add-collection">
+                    <button class="add-collection" onclick="modalAddCollection()">
                         <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" class="mr-1 text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
@@ -63,7 +63,7 @@
         <div class="modal-add-collection">
             <form id="form-collection" class="main-form" action="/authorized/collection/create?token=<%= token %>" method="POST">
                 <header class="title">Adicionar coleção</header>
-                <div class="close">
+                <div class="close" onclick="modalCloseCollection()">
                     <svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-onkibi" aria-hidden="true">
                         <path fill="currentColor" d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"></path>
                     </svg>
@@ -71,10 +71,8 @@
                 <section class="main">
                     <label class="text-name" for="input-name">Nome</label>
                     <input type="text" id="input-name" name="name" placeholder="Minha coleção" required>
-                    <input class="hidden" id="input-id" type="text" name="userId" value="<%= user.id %>">
-                    <input class="hidden" id="input-token" type="text" name="token" value="<%= token %>">
                     <label>
-                        Cor
+                        <!-- Cor -->
                         <div class="colors">
                             <!-- cores pre-definidas -->
                         </div>
@@ -86,7 +84,6 @@
                 </section>
                 <footer>
                     <button type="submit" form="form-collection">Criar</button>
-                    <!-- <button onclick="addCollection()">Criar</button> -->
                     <div class="cancel" onclick="modalCloseCollection()">Cancelar</div>
                 </footer>
             </form>

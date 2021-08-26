@@ -26,12 +26,12 @@ module.exports = {
             "${newCollection?.task}",
             "${newCollection?.color}",
             "${newCollection?.checked}"
-        )`)
+        )`);
 
         await db.close();
     },
     
-    async update( newCollection, userID ) {
+    async update( newCollection, id ) {
         const db = await Database();
 
         await db.run(`UPDATE collections SET 
@@ -40,7 +40,7 @@ module.exports = {
         task = "${newCollection.task}",
         color = "${newCollection.color}",
         checked = "${newCollection.checked}"
-        WHERE id = ${userID}`)
+        WHERE id = ${id}`);
 
         await db.close();
     },

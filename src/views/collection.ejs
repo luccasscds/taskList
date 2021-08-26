@@ -37,7 +37,7 @@
                         <h1 class="text-h1"><%= collection.name%></h1>
                     </div>
                     <div class="button-modal">
-                        <button>
+                        <button onclick="modalCollection()">
                             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
                             </svg>
@@ -46,7 +46,7 @@
                         <!-- modal collection -->
                         <div class="modal-collection">
                             <div class="option">
-                                <button>
+                                <button onclick="modalAddCollection()">
                                     <div>Editar coleção</div>
                                 </button>
                             </div>
@@ -61,39 +61,43 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-sub-title">tarefas - 2</p>
+                <p class="text-sub-title">tarefas - <%= tasks.length %></p>
 
                 <!-- Tasks -->
                 <div>
-                    <div class="task">
-                        <div class="main">
-                            <button style="border-color: <%= collection.color %>;"></button>
-                            <p class="task-name"><%= collection.task %></p>
-                            <div class="task-button">
-                                <div>
-                                    <button>
-                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                    
-                                    <!-- modal task -->
-                                    <div class="modal-task">
-                                        <div class="option">
+                    <% tasks.forEach(task => { %>
+                        <% if(task.checked === "false"){%>
+                            <div class="task">
+                                <div class="main">
+                                    <button style="border-color: <%= collection.color %>;"></button>
+                                    <p class="task-name"><%= task.name %></p>
+                                    <div class="task-button" onclick="modalTask()">
+                                        <div>
                                             <button>
-                                                <div>Editar</div>
+                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
                                             </button>
+                                            
+                                            <!-- modal task -->
+                                            <div class="modal-task">
+                                                <div class="option">
+                                                    <button>
+                                                        <div>Editar</div>
+                                                    </button>
+                                                </div>
+                                                <div class="option">
+                                                    <button>
+                                                        <div>Deletar</div>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="option">
-                                            <button>
-                                                <div>Deletar</div>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    </div> 
                                 </div>
-                            </div> 
-                        </div>
-                    </div>
+                            </div>
+                        <%}%>
+                    <% }) %>
                 </div>
 
                 <!-- Add task -->
@@ -110,42 +114,79 @@
                     </div>
                 </form>
 
-                <p class="completed">Concluídas - 1</p>
-
-                <div class="completed-">
-                    <div class="task">
-                        <div class="main">
-                            <button class="check" style="background-color: <%= collection.color %>; border-color: <%= collection.color %>;">
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <p class="line-through">texto da tarefa concluida</p>
-                            <div class="task-button">
-                                <div class="completed-task">
-                                    <button>
-                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
+                <% tasks.forEach(task => { %>
+                    <% if(task.checked === "true"){%>
+                        <p class="completed">Concluídas - 1</p>
+                        <div class="completed-">
+                            <div class="task">
+                                <div class="main">
+                                    <button class="check" style="background-color: <%= collection.color %>; border-color: <%= collection.color %>;">
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                         </svg>
                                     </button>
-                                    
-                                    <!-- modal completed task -->
-                                    <div class="modal-completed-task">
-                                        <div class="option">
-                                            <button>
-                                                <div>Deletar</div>
+                                    <p class="line-through"><%= task.name %></p>
+                                    <div class="task-button">
+                                        <div class="completed-task">
+                                            <button onclick="modalCompletedTask()">
+                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
+                                                </svg>
                                             </button>
+                                            
+                                            <!-- modal completed task -->
+                                            <div class="modal-completed-task">
+                                                <div class="option">
+                                                    <button>
+                                                        <div>Deletar</div>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
-                            </div> 
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    <%}%> 
+                <%})%> 
 
             </section>
         </main>
         <footer></footer>
+
+        <!-- Modal add collection -->
+        <div class="modal-add-collection">
+            <form id="form-collection" 
+                class="main-form" 
+                method="POST"
+                action="/authorized/collection/update/<%= collection.id %>?token=<%= token %>" 
+            >
+                <header class="title">Adicionar coleção</header>
+                <div class="close">
+                    <svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-onkibi" aria-hidden="true">
+                        <path fill="currentColor" d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"></path>
+                    </svg>
+                </div>
+                <section class="main">
+                    <label class="text-name" for="input-name">Nome</label>
+                    <input type="text" id="input-name" name="name" placeholder="Minha coleção" value="<%= collection.name %>" required>
+                    <label>
+                        <!-- Cor -->
+                        <div class="colors">
+                            <!-- cores pre-definidas -->
+                        </div>
+                    </label>
+                    <label class="custom-colors" for="custom-color">
+                        Personalizar cor
+                        <input type="color" name="color" id="custom-color" value="<%= collection.color %>">
+                    </label>
+                </section>
+                <footer>
+                    <button type="submit" form="form-collection">Criar</button>
+                    <div class="cancel" onclick="modalCloseCollection()">Cancelar</div>
+                </footer>
+            </form>
+        </div>
     </div>
 </body>
 </html>
