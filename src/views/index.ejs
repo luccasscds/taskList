@@ -41,7 +41,11 @@
                                 </div>
                                 <div class="text">
                                     <h2><%= collection.name %></h2>
-                                    <p>0 tarefa</p>
+                                    <% if(collection.task.length < 2) {%>
+                                        <p><%= collection.task.length %> tarefa</p>
+                                    <%}else {%>
+                                        <p><%= collection.task.length %> tarefas</p>
+                                    <%}%>
                                 </div>
                             </div>
                         </a>
