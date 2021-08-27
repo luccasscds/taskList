@@ -10,5 +10,6 @@
 - [x] listar taks
 - [x] update do collection
 - [x] add taks
-- [ ] delete taks
+- [x] delete taks
+- [x] marcar task como feita
 - [ ] Fazer sair do login

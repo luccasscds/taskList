@@ -25,5 +25,6 @@ routes.post("/authorized/collection/update/:id", collectionController.update)
 
 routes.post("/authorized/task/create/:id", taskController.create)
 routes.post("/authorized/task/delete/:idCollection/:index", taskController.delete)
+routes.post("/authorized/task/done/:idCollection/:index", taskController.done)
 
 module.exports = routes;

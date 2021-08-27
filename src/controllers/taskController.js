@@ -45,5 +45,30 @@ module.exports = {
         await Collections.update(newCollection, idCollection);
 
         return res.redirect(`/authorized/collection/${idCollection}?token=${token}`);
+    },
+
+    async done(req, res) {
+        const {token} = req;
+        const {index, idCollection} = req.params;
+        const collections = await Collections.get();
+
+        const newCollection = collections.find( collection => {
+            if(collection.id == idCollection){
+                const tasks = JSON.parse(collection.task);
+                tasks.forEach( task => {
+                    if(task.id == index) {
+                        if(task.checked == "true") {
+                            task.checked = "false";
+                        }else if(task.checked == "false") {
+                            task.checked = "true";
+                        }
+                    };
+                });
+                collection.task = JSON.stringify(tasks);
+                return collection;
+            };
+        });
+        await Collections.update(newCollection, idCollection);
+        return res.redirect(`/authorized/collection/${idCollection}?token=${token}`);
     }
 }
