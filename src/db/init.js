@@ -45,7 +45,7 @@ const initDb = {
         ) VALUES (
             "1",
             "trabalho",
-            "[{"id":1,"name":"fazer o amorzao feliz","checked":"false"},{"id":2,"name":"levar o chocolate pra minha nega","checked":"true"},{"id":3,"name":"trabalho","checked":"false"}]",
+            "[{"id":0,"name":"fazer o amorzao feliz","checked":"false"},{"id":1,"name":"fazer um migau","checked":"false"}]",
             "#000000"
         );`)
 

@@ -32,13 +32,16 @@ function modalCollection() {
     modal.classList.add('open');
 };
 
-function modalTask() {
-    const modal = document.querySelector('.modal-task');
-    const open = modal.classList[1];
-
-    modal.classList.add('open');
-    
-    if(open === "open") return modal.classList.remove('open');
+function modalTask(event) {
+    const divs = document.querySelectorAll('.modal-task');
+    divs.forEach( modal => {
+        const id = modal.dataset.id;
+        if(id == event){
+            const open = modal.classList[1];
+            if(open === "open") return modal.classList.remove('open');
+            modal.classList.add('open');
+        };
+    });
 };
 
 function modalCompletedTask() {

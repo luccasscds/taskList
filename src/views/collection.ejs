@@ -81,25 +81,29 @@
                             <div class="main">
                                 <button style="border-color: <%= collection.color %>;"></button>
                                 <p class="task-name"><%= task.name %></p>
-                                <div class="task-button" onclick="modalTask()">
+                                <div class="task-button">
                                     <div>
-                                        <button>
+                                        <button onclick="modalTask(<%= task.id %>)">
                                             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle>
                                             </svg>
                                         </button>
                                         
                                         <!-- modal task -->
-                                        <div class="modal-task">
+                                        <div class="modal-task" data-id="<%= task.id %>">
                                             <div class="option">
                                                 <button>
                                                     <div>Editar</div>
                                                 </button>
                                             </div>
                                             <div class="option">
-                                                <button>
+                                                <button form="delete-task<%= task.id %>">
                                                     <div>Deletar</div>
                                                 </button>
+                                                <form 
+                                                id="delete-task<%= task.id %>" 
+                                                action="/authorized/task/delete/<%= collection.id %>/<%= task.id %>?token=<%= token %>" 
+                                                method="post"></form>
                                             </div>
                                         </div>
                                     </div>

@@ -260,6 +260,8 @@ MODAL ADD COLLECTION
     border-radius: .375rem;
 
     background-color: var(--blue-black-2);
+
+    z-index: 10;
     visibility: hidden;
     opacity: 0;
 }
