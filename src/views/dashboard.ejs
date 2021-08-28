@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de controle - Task List</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+
+    <!-- Script -->
+    <script src="/scripts/modal.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
+
+</head>
+<body>
+    <div id="index">
+
+        <%- include('parts/header') %>
+        
+        <main>
+            <section>
+                <h1>Coleções</h1>
+                <div class="group-collections">
+                    <!-- coleções -->
+                    <% collections.forEach(collection => { %>
+                        <a class="collection" href="/authorized/collection/<%= collection.id %>?token=<%= token %>">
+                            <div class="main">
+                                <div class="background-svg" style="background-color: <%= collection.color %>;">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" font-size="30px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text">
+                                    <h2><%= collection.name %></h2>
+                                    <% if(collection.task.length < 2) {%>
+                                        <p><%= collection.task.length %> tarefa</p>
+                                    <%}else {%>
+                                        <p><%= collection.task.length %> tarefas</p>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </a>
+                    <% }) %>
+                    <!-- add button collection -->
+                    <button class="add-collection" onclick="modalAddCollection()">
+                        <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" class="mr-1 text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        Adicionar coleção
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer></footer>
+
+        <!-- Modal add collection -->
+        <div class="modal-add-collection">
+            <form id="form-collection" class="main-form" action="/authorized/collection/create?token=<%= token %>" method="POST">
+                <header class="title">Adicionar coleção</header>
+                <div class="close" onclick="modalCloseCollection()">
+                    <svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-onkibi" aria-hidden="true">
+                        <path fill="currentColor" d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"></path>
+                    </svg>
+                </div>
+                <section class="main">
+                    <label class="text-name" for="input-name">Nome</label>
+                    <input type="text" id="input-name" name="name" placeholder="Minha coleção" required>
+                    <label class="custom-colors" for="custom-color">
+                        Personalizar cor
+                        <input type="color" name="color" id="custom-color" value="#9d4edd">
+                    </label>
+                </section>
+                <footer>
+                    <button type="submit" form="form-collection">Criar</button>
+                    <div class="cancel" onclick="modalCloseCollection()">Cancelar</div>
+                </footer>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -14,4 +14,5 @@
 - [x] marcar task como feita
 - [x] mostrar as quantidades das tasks
 - [x] fazer o config do usuario
+- [x] ajeitar o index do app
 - [ ] Fazer sair do login

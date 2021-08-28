@@ -55,7 +55,7 @@ svg {
 #config main section .dashboard {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 7.9375rem;
+    gap: 1rem;
 }
 
 #config main section .dashboard .avatar-datas {

@@ -3,7 +3,7 @@ const User = require('../model/User');
 
 module.exports = {
     index(req, res) {
-        res.render('index', { user : undefined });
+        res.render('index');
     },
 
     async authorized(req, res){
@@ -22,6 +22,6 @@ module.exports = {
                 return collection;
             };
         });
-        res.render('index', { user: userOnLine, token: token, collections: newCollections});
+        res.render('dashboard', { user: userOnLine, token: token, collections: newCollections});
     }
 };
