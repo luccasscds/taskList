@@ -23,7 +23,7 @@
                         <p>Olá <%= user?.name %></p>
                     </div>
                     <div class="config">
-                        <a href="/user/config">
+                        <a href="/authorized/user/config?token=<%= token %>">
                             <p>Configurações</p>
                         </a>
                     </div>

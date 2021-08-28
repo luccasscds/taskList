@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de controle - Task List</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/config.css">
+
+    <!-- Script -->
+
+</head>
+<body>
+    <div id="config">
+        <header>
+            <!-- <div class="header"> -->
+                <div class="back-title">
+                    <a class="back-icon" href="/authorized?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjMwMTAxNTg5LCJleHAiOjE2MzAxODYxODl9.ogdot2peKwDXsjwJ6fADXR1wuy_datZVebYFZpShy1o">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M328 112L184 256l144 144"></path>
+                        </svg>
+                    </a>
+                    <h1 class="text-h1">Meu perfil</h1>
+                </div>
+            <!-- </div> -->
+        </header>
+        <main>
+            <section>
+                <div class="dashboard">
+                    <div class="avatar-datas">
+                        <div class="border-img">
+                            <img class="avatar" src="<%= user.picture %>">
+                        </div>
+                        <p class="name"><%= user.name %></p>
+                        <p class="email"><%= user.email %></p>
+                        <button form="update-user" type="submit">Salvar</button>
+                    </div>
+                    
+                    <div class="pessoal-datas">
+                        <p>Dados do perfil</p>
+                        <div class="inputs">
+                            <form id="update-user"
+                                action="/authorized/user/update?token=<%= token %>" 
+                                method="post">
+                                <label for="user-name">Nome</label>
+                                <input type="text" name="name" value="<%= user.name %>" placeholder="Name">
+                                
+                                <label for="user-email">Email</label>
+                                <input type="text" name="picture" value="<%= user.picture %>" placeholder="Link da foto">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

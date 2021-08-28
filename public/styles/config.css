@@ -1,0 +1,136 @@
+html {
+    background-color: var(--black);
+    color: var(--white);
+}
+svg { 
+    width: 24px;
+    height: 24px;
+}
+
+#config header {
+    background-color: var(--blue-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 1.25rem;
+}
+
+#config header .back-title {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#config header .back-title .back-icon {
+    background-color: var(--blue-black-white);
+    display: flex;
+    justify-content: center;
+
+    padding: .75rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    position: absolute;
+}
+
+#config header .back-title .text-h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+
+    color: var(--white);
+}
+
+#config main {
+    padding: 0 1.25rem;
+}
+
+#config main section .dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 7.9375rem;
+}
+
+#config main section .dashboard .avatar-datas {
+    background-color: var(--blue-black);
+
+    width: 352px;
+    padding: 3.875rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#config main section .dashboard .avatar-datas .border-img {
+    width: 180px;
+    border: 5px solid #F1972C;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#config main section .dashboard .avatar-datas .border-img .avatar {
+    width: 100%;
+    margin: 0;
+}
+
+#config main section .dashboard .avatar-datas .name {
+    padding-top: 24px;
+
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 30px;
+}
+
+#config main section .dashboard .avatar-datas .email {
+    font-weight: 600;
+    line-height: 30px;
+
+    padding-bottom: 24px;
+}
+
+#config main section .dashboard .avatar-datas button {
+    background-color: #36B236;
+    padding: 12px 48px;
+    border-radius: 1.25rem;
+    color: var(--white);
+
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#config main section .dashboard .avatar-datas .pessoal-datas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#config main section .dashboard .pessoal-datas > p {
+    font-weight: 600;
+    font-size: 32px;
+
+    padding-bottom: 1rem;
+    border-bottom: 1.5px solid #E1E3E5;
+    margin-bottom: 1rem;
+}
+
+#config main section .dashboard .pessoal-datas .inputs {
+    display: grid;
+    grid-template-rows: repeat(2,auto);
+    gap: 1rem;
+}
+
+#config main section .dashboard .pessoal-datas .inputs input {
+    width: 100%;
+
+    padding: 1rem 0 1rem 24px;
+    margin-bottom: 56px;
+    border-radius: .5rem;
+}

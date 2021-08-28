@@ -12,4 +12,6 @@
 - [x] add taks
 - [x] delete taks
 - [x] marcar task como feita
+- [x] mostrar as quantidades das tasks
+- [x] fazer o config do usuario
 - [ ] Fazer sair do login
