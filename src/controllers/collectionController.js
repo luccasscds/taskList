@@ -1,10 +1,18 @@
 const Collections = require('../model/Collection');
+const Users = require('../model/User');
 
 module.exports = {
     async index(req, res) {
         const collections = await Collections.get();
+        const users = await Users.get();
         const {token, userId} = req;
         const {id} = req.params;
+
+        const user = users.find( user => {
+            if(user.id == userId) {
+                return user;
+            }
+        });
 
         const selctionCollections = collections.find( collection => {
             if(collection.id == id) {
@@ -16,7 +24,7 @@ module.exports = {
         
         const tasks = JSON.parse(selctionCollections.task);
 
-        return res.render('collection', { collection: selctionCollections ,tasks: tasks ,token: token});
+        return res.render('collection', { user: user, collection: selctionCollections ,tasks: tasks ,token: token});
     },
     
     async create(req, res) {

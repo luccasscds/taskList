@@ -15,4 +15,6 @@
 - [x] mostrar as quantidades das tasks
 - [x] fazer o config do usuario
 - [x] ajeitar o index do app
+- [x] colocar o barra de navegaçao no colections
+- [ ] ajeitar os modais q nao fecha qnd o outro abrir
 - [ ] Fazer sair do login
