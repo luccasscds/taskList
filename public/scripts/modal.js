@@ -1,3 +1,15 @@
+function openController(classModal) {
+    const modais = document.querySelectorAll('.open');
+
+    console.log(modais.length);
+    modais.forEach( modal => {
+        modal.classList.remove('open');
+    });
+    
+    const newModais = document.querySelectorAll('.open');
+    if(newModais.length == 0) classModal.classList.add('open');
+}
+
 // Modal do profile
 function modalController(event) {
     const profile = document.querySelector('.modal');
@@ -5,17 +17,15 @@ function modalController(event) {
     
     if(avatar === 'avatar') {
         const open = profile.classList[1];
-        profile.classList.add('open');
+        openController(profile);
 
-        if(open === "open") {
-            profile.classList.remove('open');
-        };
+        if(open === "open") profile.classList.remove('open');
     };
 };
 
 function modalAddCollection() {
     const modal = document.querySelector('.modal-add-collection');
-    modal.classList.add('open');
+    openController(modal);
 };
 
 function modalCloseCollection() {
@@ -29,7 +39,7 @@ function modalCollection() {
 
     if(open === "open") return modal.classList.remove('open');
     
-    modal.classList.add('open');
+    openController(modal);
 };
 
 function modalTask(event) {
@@ -39,7 +49,7 @@ function modalTask(event) {
         if(id == event){
             const open = modal.classList[1];
             if(open === "open") return modal.classList.remove('open');
-            modal.classList.add('open');
+            openController(modal);
         };
     });
 };
@@ -48,7 +58,7 @@ function modalCompletedTask() {
     const modal = document.querySelector('.modal-completed-task');
     const open = modal.classList[1];
     
-    modal.classList.add('open');
+    openController(modal);
     
     if(open === "open") return modal.classList.remove('open');
 };

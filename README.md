@@ -17,5 +17,5 @@
 - [x] ajeitar o index do app
 - [x] colocar o barra de navegaçao no colections
 - [x] config nao esta voltando o botão
-- [ ] ajeitar os modais q nao fecha qnd o outro abrir
+- [x] ajeitar os modais q nao fecha qnd o outro abrir
 - [ ] Fazer sair do login
