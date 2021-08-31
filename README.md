@@ -19,4 +19,4 @@
 - [x] config nao esta voltando o botão
 - [x] ajeitar os modais q nao fecha qnd o outro abrir
 - [x] cerate um user new com foto padrao
-- [ ] Fazer sair do login
+- [x] Fazer sair do login
