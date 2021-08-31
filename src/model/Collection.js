@@ -20,10 +20,10 @@ module.exports = {
             task,
             color
         ) VALUES (
-            "${newCollection.userId}",
-            "${newCollection.name}",
-            "${newCollection?.task}",
-            "${newCollection?.color}"
+            '${newCollection.userId}',
+            '${newCollection.name}',
+            '${newCollection?.task}',
+            '${newCollection?.color}'
         )`);
 
         await db.close();

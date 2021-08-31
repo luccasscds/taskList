@@ -20,3 +20,4 @@
 - [x] ajeitar os modais q nao fecha qnd o outro abrir
 - [x] cerate um user new com foto padrao
 - [x] Fazer sair do login
+- [ ] verificar se o task da collection esta vazio
