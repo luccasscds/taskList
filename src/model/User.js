@@ -22,8 +22,7 @@ module.exports = {
                 name: payload.name,
                 picture: payload.picture,
                 given_name: payload.given_name,
-                family_name: payload.family_name,
-                isSignedIn: "true"
+                family_name: payload.family_name
             }
         }
     },
@@ -32,8 +31,8 @@ module.exports = {
         
         // Criptografando a senha do usuario
         if(newUser.password !== 'google' && newUser.password !== 'git') {
-            const hash = await bcrypt.hash(newUser.password, 10)
-            newUser.password = hash
+            const hash = await bcrypt.hash(newUser.password, 10);
+            newUser.password = hash;
         }
 
         const db = await Database()
@@ -42,14 +41,12 @@ module.exports = {
             email,
             password,
             name,
-            picture,
-            isSignedIn
+            picture
         ) VALUES (
             "${newUser.email}",
             "${newUser.password}",
             "${newUser.name}",
-            "${newUser.picture}",
-            "true"
+            "${newUser.picture}"
         )`)
 
         await db.close()
@@ -72,8 +69,7 @@ module.exports = {
         email="${updateuser.email}",
         password="${updateuser.password}",
         name="${updateuser.name}",
-        picture="${updateuser.picture}",
-        isSignedIn="${updateuser.isSignedIn}"
+        picture="${updateuser.picture}"
         WHERE id = ${userId}
         `)
 

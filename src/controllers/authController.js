@@ -101,24 +101,27 @@ module.exports = {
             // Verificar se a conta existe no banco de dados
             users.forEach( user => {
                 if(user.email === email) {
-                    existe = true
-                    res.send("Usuário já existe")
-                }
-            })
+                    existe = true;
+                    res.send("Usuário já existe");
+                };
+            });
             if(existe === false) {
                 // Criar user no db
-                await User.create(req.body)
-                const newUsers = await User.get()
+                await User.create({
+                    ...req.body,
+                    picture: "https://image.flaticon.com/icons/png/512/4322/4322991.png"
+                });
+                const newUsers = await User.get();
                 // gerar o token depois que o user tiver criado no db
                 newUsers.find( user => {
                     if(user.email === email) {
-                        const token = gererateToken(user.id)
-                        return res.redirect(`/authorized?token=${token}`)
-                    }
-                })
-            }
+                        const token = gererateToken(user.id);
+                        return res.redirect(`/authorized?token=${token}`);
+                    };
+                });
+            };
         } catch {
-            return res.send('Erro no cadastro')
+            return res.send('Erro no cadastro');
         }
     },
 

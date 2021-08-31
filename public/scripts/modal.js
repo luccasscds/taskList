@@ -1,7 +1,6 @@
 function openController(classModal) {
     const modais = document.querySelectorAll('.open');
 
-    console.log(modais.length);
     modais.forEach( modal => {
         modal.classList.remove('open');
     });

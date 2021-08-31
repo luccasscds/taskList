@@ -10,8 +10,7 @@ const initDb = {
             email TEXT,
             password TEXT,
             name TEXT,
-            picture TEXT,
-            isSignedIn TEXT
+            picture TEXT
         )`);
 
         await db.exec(`CREATE TABLE collections (
@@ -27,14 +26,12 @@ const initDb = {
             email,
             password,
             name,
-            picture,
-            isSignedIn
+            picture
         ) VALUES (
-            "lucas@gmail.com",
-            "",
-            "vitor carlo",
-            "https://lh3.googleusercontent.com/a/AATXAJwDuuC7vFqt7RtaP2EuGMjz4BGpJ8_-UI7h_I3x=s96-c",
-            "false"
+            'lucas@gmail.com',
+            '$2a$10$iHDApjPhLZ.7ckK2ylnI4eeWAt/Pw2jWgKL9uWYLpzBapnt2.Z7oy',
+            'Lucas silva',
+            'https://lh3.googleusercontent.com/a/AATXAJwDuuC7vFqt7RtaP2EuGMjz4BGpJ8_-UI7h_I3x=s96-c'
         );`)
 
         await db.run(`INSERT INTO collections (
@@ -43,10 +40,10 @@ const initDb = {
             task,
             color
         ) VALUES (
-            "1",
-            "trabalho",
-            "[{"id":0,"name":"fazer o amorzao feliz","checked":"false"},{"id":1,"name":"fazer um migau","checked":"false"}]",
-            "#000000"
+            '1',
+            'trabalho',
+            '[{"id":0,"name":"fazer o amorzao feliz","checked":"false"},{"id":1,"name":"fazer um migau","checked":"false"}]',
+            '#000000'
         );`)
 
         await db.close()
