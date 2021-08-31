@@ -67,7 +67,6 @@ module.exports = {
 
         await db.run(`UPDATE users SET 
         email="${updateuser.email}",
-        password="${updateuser.password}",
         name="${updateuser.name}",
         picture="${updateuser.picture}"
         WHERE id = ${userId}
