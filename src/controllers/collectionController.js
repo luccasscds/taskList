@@ -36,7 +36,7 @@ module.exports = {
         await Collections.create({
             userId: userId,
             name: name,
-            task: '[{}]',
+            task: '[]',
             color: color
         });
         
