@@ -70,5 +70,27 @@ module.exports = {
         });
         await Collections.update(newCollection, idCollection);
         return res.redirect(`/authorized/collection/${idCollection}?token=${token}`);
+    },
+
+    async update(req, res) {
+        const {token} = req;
+        const {index, idCollection} = req.params;
+        const {name} = req.body;
+        const collections = await Collections.get();
+
+        const newCollection = collections.find( collection => {
+            if(collection.id == idCollection){
+                const tasks = JSON.parse(collection.task);
+                tasks.forEach( task => {
+                    if(task.id == index) {
+                        if(task.name !== name) task.name = name;
+                    };
+                });
+                collection.task = JSON.stringify(tasks);
+                return collection;
+            };
+        });
+        await Collections.update(newCollection, idCollection);
+        return res.redirect(`/authorized/collection/${idCollection}?token=${token}`);
     }
 }

@@ -30,5 +30,6 @@ routes.post("/authorized/user/update", userController.update)
 routes.post("/authorized/task/create/:id", taskController.create)
 routes.post("/authorized/task/delete/:idCollection/:index", taskController.delete)
 routes.post("/authorized/task/done/:idCollection/:index", taskController.done)
+routes.post("/authorized/task/update/:idCollection/:index", taskController.update)
 
 module.exports = routes;

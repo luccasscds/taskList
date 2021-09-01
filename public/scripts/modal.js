@@ -61,3 +61,18 @@ function modalCompletedTask() {
     
     if(open === "open") return modal.classList.remove('open');
 };
+
+function modalEditTask(id) {
+    if(id !== undefined) {
+        const form = document.querySelector('.modal-edit-task .main-form');
+        const newUrl = form.action.replace(":index", id);
+
+        form.action = newUrl;
+    }
+    const modal = document.querySelector('.modal-edit-task');
+    const open = modal.classList[1];
+    
+    openController(modal);
+    
+    if(open === "open") return modal.classList.remove('open');
+};
