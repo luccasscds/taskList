@@ -17,4 +17,4 @@ server.use('/authorized/',authMiddleware)
 
 server.use(routes)
 
-server.listen(3000, () => console.log("Rodando"))
+server.listen(process.env.PORT || 3000)
