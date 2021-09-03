@@ -51,6 +51,7 @@ html {
     width: 100%;
     height: 400px;
 }
+
 main {
     display: flex;
     flex-direction: column;
@@ -72,4 +73,17 @@ main section h1 {
     font-weight: 700;
 
     color: var(--white);
+}
+
+/* ****************************
+RESPONSIVO
+**************************** */
+@media (max-width: 459px) {
+    #index header .container > nav {
+        flex-direction: column;
+    }
+    
+    #index header .container > nav .left-nav {
+        margin-bottom: 1.5rem;
+    }
 }
