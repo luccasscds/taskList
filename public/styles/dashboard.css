@@ -103,3 +103,12 @@ main section h1 {
 .add-collection > svg {
     margin: .25rem;
 }
+
+/* ****************************
+RESPONSIVO
+**************************** */
+@media (max-width: 580px) {
+    .group-collections {
+        grid-template-columns: auto;
+    }
+}
