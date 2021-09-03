@@ -134,3 +134,17 @@ svg {
     margin-bottom: 56px;
     border-radius: .5rem;
 }
+
+/* ****************************
+RESPONSIVO
+**************************** */
+@media (max-width: 580px) {
+    #config main section .dashboard {
+        display: flex;
+        flex-direction: column;
+    }
+    #config main section .dashboard .avatar-datas {
+        width: auto;
+    }
+    
+}
