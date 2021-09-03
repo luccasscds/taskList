@@ -24,7 +24,7 @@ async function getTokenGoogle(code) {
             code : code,
             client_id : '911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com',
             client_secret : 'RW7YSCtKmUdaHkpZYSABLBEo',
-            redirect_uri : 'http://localhost:3000/signGoogle',
+            redirect_uri : 'https://task-list12.herokuapp.com/signGoogle',
             grant_type : 'authorization_code'
         })
     }
