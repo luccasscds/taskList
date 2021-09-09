@@ -43,7 +43,7 @@ cd taskList
 Para iniciá-lo, siga os passos abaixo:
 ```bash
 #Instale o packajson
-npm install packajosn.json
+npm install
 
 # Iniciar o projeto
 npm run dev
