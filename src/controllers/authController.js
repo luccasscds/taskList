@@ -38,8 +38,6 @@ async function getTokenGoogle(code) {
 }
 // obter token do GitHub
 async function getTokenGit(code) {
-    const client_id = 'a304031e4c1e9ce53f74'
-    const client_secret = '9a04141914533577b9a38b144ebba9d8b4e62187'
     let token
 
     const url = `https://github.com/login/oauth/access_token`
@@ -49,8 +47,8 @@ async function getTokenGit(code) {
             "Accept" : "application/json"
         },
         body: new URLSearchParams({
-            client_id : client_id,
-            client_secret : client_secret,
+            client_id : process.env.GITHUB_CLIENT_ID,
+            client_secret : process.env.GITHUB_CLIENT_SECRET,
             code : code
         })
     }
