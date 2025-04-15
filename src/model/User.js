@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     // Verificando token id do goole
     async verifyTokenGoogle(idToken) {
-        const clientID = '911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com'
+        const clientID = process.env.GOOGLE_CLIENT_ID
         const client = new OAuth2Client(clientID);
 
         const ticket = await client.verifyIdToken({

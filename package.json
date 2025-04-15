@@ -1,11 +1,11 @@
 {
   "name": "taskList",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Task list é uma aplicação foi projetada para criar tarefas, dividindo-as em categorias, sendo possível marcá-las ou não como lidas.",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "dev": "nodemon .",
+    "start": "node .",
     "init-db": "node src/db/init.js"
   },
   "keywords": [],
@@ -13,13 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
     "google-auth-library": "^7.5.0",
     "jsonwebtoken": "^8.5.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.7.0",
     "sqlite": "^4.0.23",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

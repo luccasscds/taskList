@@ -21,10 +21,10 @@ async function getTokenGoogle(code) {
             'Content-Type' : 'application/x-www-form-urlencoded'
         },
         body : new URLSearchParams({
-            code : code,
-            client_id : '911878798196-11jbdiam8s64rkcpkjb31061mqa2vrrj.apps.googleusercontent.com',
-            client_secret : 'RW7YSCtKmUdaHkpZYSABLBEo',
-            redirect_uri : 'https://task-list12.herokuapp.com/signGoogle',
+            code,
+            client_id : process.env.GOOGLE_CLIENT_ID,
+            client_secret : process.env.GOOGLE_CLIENT_SECRET,
+            redirect_uri : process.env.GOOGLE_REDIRECT_URI,
             grant_type : 'authorization_code'
         })
     }
