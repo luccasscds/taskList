@@ -29,9 +29,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - SQlite
 - JSONWebToken
 
-## 🔭 Visualizar
-Você pode ver o projeto através desse [link](https://task-list12.herokuapp.com).
-
 ## 🚀 Executar
 Clone o projeto e acesse a pasta do mesmo.
 
